@@ -6,23 +6,23 @@
 int registro() // funcao responsavel por cadastrar o usuario;
 {
   setlocale(LC_ALL, "Portuguese");
-//inicio criação de variaveis.
+  // inicio criação de variaveis.
   char arquivo[40];
   char cpf[40];
   char nome[40];
   char sobrenome[40];
   char cargo[40];
-//final criação de variaveis.
+  // final criação de variaveis.
 
-  printf("Digite o CPF a ser cadastrado");//coletando informações do usuario
+  printf("Digite o CPF a ser cadastrado"); // coletando informações do usuario
   scanf("%s", cpf);
 
-  strcpy(arquivo, cpf);//responsavel por copiar os valores da string
+  strcpy(arquivo, cpf); // responsavel por copiar os valores da string
 
   FILE *file;                 // cria o arquivo
-  file = fopen(arquivo, "w"); // w para escrever 
-  fprintf(file, cpf);//salva o valor da variavel
-  fclose(file);//fecha o arquivo;
+  file = fopen(arquivo, "w"); // w para escrever
+  fprintf(file, cpf);         // salva o valor da variavel
+  fclose(file);               // fecha o arquivo;
 
   file = fopen(arquivo, "a");
   fprintf(file, ",");
@@ -70,7 +70,7 @@ int consulta()
   scanf("%s", cpf);
 
   FILE *file;
-  file = fopen(cpf, "r");// r para ler 
+  file = fopen(cpf, "r"); // r para ler
 
   if (file == NULL)
   {
@@ -84,7 +84,6 @@ int consulta()
     printf("\n\n");
   }
 
-
   getchar(); // pausa até que o usuário pressione Enter
 }
 
@@ -92,20 +91,23 @@ int deletar()
 {
   char cpf[40];
   printf("Digite o CPf a ser deletado: ");
-  scanf("%s", cpf); 
+  scanf("%s", cpf);
 
   remove(cpf);
 
-  FILE * file;
+  FILE *file;
   file = fopen(cpf, "r");
 
-  if (remove(cpf) == 0) {
-        printf("Usuário removido com sucesso!\n");
-    } else {
-        printf("Não foi possível remover o usuário ou o usuário não encontrado!\n");
-    }
+  if (remove(cpf) == 0)
+  {
+    printf("Usuário removido com sucesso!\n");
+  }
+  else
+  {
+    printf("Não foi possível remover o usuário ou o usuário não encontrado!\n");
+  }
 
-    getchar(); // pausa até que o usuário pressione Enter
+  getchar(); // pausa até que o usuário pressione Enter
 }
 
 int main()
@@ -138,6 +140,11 @@ int main()
 
     case 3:
       deletar();
+      break;
+
+    case 4:
+      printf("Obrigado por utilizar o sistema \n");
+      return 0;
       break;
 
     default:
